@@ -1,0 +1,5 @@
+127.0.0.1:8080  / Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.66 Safari/537.36  / GET  / /frontend/login  / 2020-11-25 19:19:00
+127.0.0.1:8080  / PostmanRuntime/7.26.8  / PUT  / /cart  / 2020-11-25 19:19:15
+127.0.0.1:8080  / PostmanRuntime/7.26.8  / DELETE  / /cart  / 2020-11-25 19:19:21
+127.0.0.1:8080  / PostmanRuntime/7.26.8  / DELETE  / /frontend/cart  / 2020-11-25 19:21:23
+127.0.0.1:8080  / Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.66 Safari/537.36  / GET  / /frontend/login  / 2020-11-25 19:21:57
