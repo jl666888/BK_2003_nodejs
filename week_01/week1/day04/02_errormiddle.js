@@ -3,17 +3,20 @@ const fs = require('fs');
 
 const app = express();
 
-app.post('/post',(req,res) => {
+app.get('/post',(req,res) => {
     try {
-        let data = fs.readFileSync('log.txt');
+        let data = fs.readFileSync('lo2.txt');
         res.send(data);
     } catch(err) {
+        console.log(err);
+        console.log(Error);
         throw new Error('程序出错了~~~');
     }
 
 })
 
 app.use((err,req,res,next) => {
+    // console.log(err);
     res.send('Error:' + err.message );
 })
 
