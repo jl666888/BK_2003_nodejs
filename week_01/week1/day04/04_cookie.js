@@ -14,10 +14,7 @@ app.get('/get',(req,res) => {
         res.send(req.cookies.username + '欢迎注册');
     }
 })
-
-
-app.listen(8080,()=>{
-    console.log('server is running at http://127.0.0.1:8080');
+app.listen(8080,()=>{console.log('server is running at http://127.0.0.1:8080');
 })
 
 
