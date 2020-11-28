@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        i,em{
+            font-style: normal;
+        }
+        h2{
+            margin-left: 10px;
+        }
+        span{
+            display: inline-block;
+            width: 120px;
+            text-align: right;
+        }
+        .btn123{
+            margin-top: 20px;
+            margin-left: 70px;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="box">
+    <h2>新增</h2>
+    <span> 姓名：</span> <input type="text" name="name1"><i></i><br>
+    <span> 密码：</span> <input type="password" name="password1"><br>
+    <span> 年龄：</span> <input type="number" name="age1"><br>
+    <span> 性别：</span> <input type="text" name="gender1"><em></em><br>
+    <span> 邮箱：</span> <input type="text" name="email1"><br>
+    <button class="btn123">提交</button>
+    </div>
+    <script src="./jquery.min.js"></script>
+    <script>
+
+        $('button.btn123').click(function(){
+            let gender = '';
+            $('[name="name1"]').val() === '' ? $('i').css({color:'red'}).html('*必填项'):$('i').html('');
+            if($('[name="gender1"]').val() === '男'){
+                gender = 1;
+            } else if( $('[name="gender1"]').val() === '女'){
+                gender = 2;
+            } else {
+                $('em').css({color:'red'}).html('您填写性别的有误~~');
+                return;
+            }
+            
+            let name = $('[name="name1"]').val();
+            let password = $('[name="password1"]').val();
+            let age = $('[name="age1"]').val();
+            let email = $('[name="email1"]').val();
+
+            $.ajax({
+                url:'http://127.0.0.1:8080/add',
+                type:'post',
+                data:{name:name,password:password,age:age*1,gender:gender*1,email:email},
+                dataType:'json',
+                success: res => {
+                    console.log(res);
+                    $('[name="name1"]').val('');
+                    $('[name="password1"]').val('');
+                    $('[name="age1"]').val('');
+                    $('[name="gender1"]').val('');
+                    $('[name="email1"]').val('');
+                }
+            })
+        })
+
+
+    </script>
+</body>
+</html>

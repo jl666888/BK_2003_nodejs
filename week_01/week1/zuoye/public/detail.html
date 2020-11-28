@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        h1{
+            margin-left: 30px;
+
+        }
+        input{
+            margin-left: 30px;
+            width: 250px;
+        }
+        table{
+            margin: auto;
+            margin-top: 50px;
+            border-collapse: collapse;
+        }
+
+        td{
+            width: 100px;
+            height: 30px;
+            border: 2px solid #000;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>查询</h1>
+    <input type="text">
+    <button>查询</button>
+
+    <table>
+        <thead>
+            <tr>
+                <td>姓名</td>
+                <td>密码</td>
+                <td>年龄</td>
+                <td>性别</td>
+                <td>邮箱</td>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+
+
+
+    <script src="./jquery.min.js"></script>
+    <script>
+
+        $('button').click(function(){
+            let id = $('input').val();
+            $.ajax({
+                url:`http://127.0.0.1:8080/detail/${id}`,
+                type:'get',
+                data:{},
+                dataType:'json',
+                success: res => {
+                    // console.log(res);
+                    let arr = res.data;
+                    // console.log(arr);
+                    let str = '';
+                    if(arr == null) return;
+                    arr.forEach((v, k) => {
+                        let gen = v.gender === 1 ? '男' : '女';
+                        str += `
+                            <tr>
+                            <td>${v.name}</td>
+                            <td>${v.password}</td>
+                            <td>${v.age}</td>
+                            <td>${gen}</td>
+                            <td>${v.email}</td>
+                            </tr>
+                        `;
+
+                    })
+                    $('tbody').html(str);
+                }
+            })
+        })
+
+    </script>
+
+
+
+
+</body>
+</html>

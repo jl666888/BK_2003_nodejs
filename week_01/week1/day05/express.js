@@ -55,6 +55,11 @@ app.put('/change/:id',(req,res) =>{
     console.log(id,put);
     Module.updateOne({_id:id},{$set:put},res =>{}).then( ret =>{
         console.log(ret);
+        try {
+            res.send({res_code : 1 , data : ret})
+        } catch(err) {
+
+        }
     })
 })
 
@@ -63,6 +68,7 @@ app.delete('/del/:id',(req,res) =>{
     let id = req.params.id;
     Module.deleteOne({_id:id},err =>{}).then( ret => {
         console.log(ret);
+
     })
 })
 
